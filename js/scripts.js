@@ -2,7 +2,12 @@ let scene, camera, render;
 
 function init() {
   scene = new THREE.Scene();
-  scene.background = new THREE.Color(000000);
+  scene.background = new THREE.Color(0xff0000);
+
+  const background = new THREE.TextureLoader();
+  background.load('../fond.jpg', function (texture) {
+    scene.background = texture;
+  });
 
   camera = new THREE.PerspectiveCamera(
     10,
@@ -10,10 +15,9 @@ function init() {
     1,
     5000
   );
-  camera.rotation.y = (45 / 180) * Math.PI;
-  camera.position.x = 80;
-  camera.position.y = 10;
-  camera.position.z = 20;
+  camera.position.x = 0; //position droite - gauche
+  camera.position.y = 10; //position haut - bas
+  camera.position.z = 40; //pronfondeur
 
   hlight = new THREE.AmbientLight(0x404040, 10);
   scene.add(hlight);
@@ -23,16 +27,18 @@ function init() {
   directionalLight.castShadow = true;
   scene.add(directionalLight);
 
- 
 
-  renderer = new THREE.WebGLRenderer({ antialias: true });
-  renderer.setSize(window.innerWidth, window.innerHeight);
+
+  renderer = new THREE.WebGLRenderer({
+    antialias: true
+  });
+  renderer.setSize(800, 500);
 
   controls = new THREE.OrbitControls(camera, renderer.domElement);
   document.body.appendChild(renderer.domElement);
 
   let loader = new THREE.GLTFLoader();
-  loader.load("../3d-obj-loader/icecream/ice_cream.gltf", function(gltf) {
+  loader.load("../3d-obj-loader/icecream/ice_cream.gltf", function (gltf) {
     car = gltf.scene.children[0];
     car.scale.set(1, 1, 1);
     scene.add(gltf.scene);
@@ -41,35 +47,23 @@ function init() {
     bb.setFromObject(car);
     bb.center(controls.target);
   });
-
-  // var loader = new THREE.OBJLoader();
-  // loader.load("../3d-obj-loader/pokeplante.obj", function(object) {
-  //   object.traverse(function(child) {
-  //     if (child instanceof THREE.Mesh) {
-  //       child.material.ambient.setHex(0xff0000);
-  //       child.material.color.setHex(0x00ff00);
-  //     }
-  //   });
-
-  //   object.position.y = 0;
-  //   scene.add(object);
-  // });
-
-  // let loader = new THREE.OBJLoader();
-  // loader.load("../3d-obj-loader/pokeplante.obj", function(obj) {
-  //   car = obj.scene.children[0];
-  //   car.scale.set(10, 10, 10);
-  //   scene.add(obj);
-  //   animate();
-
-  //   var bb = new THREE.Box3();
-  //   bb.setFromObject(car);
-  //   bb.center(controls.target);
-  // });
 }
 
 function animate() {
   renderer.render(scene, camera);
   requestAnimationFrame(animate);
+  // var speed = Date.now() * 0.0005;
+  // camera.position.x = Math.cos(speed) * 20;
+  // camera.position.y = Math.cos(speed) * 30;
+
+  // if (camera.position.y < 0) {
+  //   camera.position.y = -camera.position.y
+  // }
+
+
+  // console.log(camera.position.y)
+
+  camera.lookAt(scene.position);
+  renderer.render(scene, camera);
 }
 init();
