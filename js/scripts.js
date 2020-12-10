@@ -1,13 +1,11 @@
 let scene, camera, render;
 
-
-
 function init() {
   scene = new THREE.Scene();
-const background = new THREE.TextureLoader();
-background.load("3d-obj-loader/assets/decor.png", function (texture) {
-  scene.background = texture;
-});
+  const background = new THREE.TextureLoader();
+  background.load("3d-obj-loader/assets/decor.png", function (texture) {
+    scene.background = texture;
+  });
 
   camera = new THREE.PerspectiveCamera(
     10,
@@ -15,10 +13,9 @@ background.load("3d-obj-loader/assets/decor.png", function (texture) {
     1,
     5000
   );
-  camera.rotation.y = (45 / 180) * Math.PI;
-  camera.position.x = 80;
-  camera.position.y = 10;
-  camera.position.z = 20;
+  camera.position.x = 0; //position droite - gauche
+  camera.position.y = 10; //position haut - bas
+  camera.position.z = 40; //pronfondeur
 
   hlight = new THREE.AmbientLight(0x404040, 8);
   scene.add(hlight);
@@ -49,5 +46,17 @@ background.load("3d-obj-loader/assets/decor.png", function (texture) {
 function animate() {
   renderer.render(scene, camera);
   requestAnimationFrame(animate);
+  var speed = Date.now() * 0.0005;
+  camera.position.x = Math.cos(speed) * 20;
+  camera.position.y = Math.cos(speed) * 30;
+
+  if (camera.position.y < 0) {
+    camera.position.y = -camera.position.y;
+  }
+
+  console.log(camera.position.y);
+
+  camera.lookAt(scene.position);
+  renderer.render(scene, camera);
 }
 init();
