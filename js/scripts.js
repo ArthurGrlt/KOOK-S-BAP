@@ -1,7 +1,5 @@
 let scene, camera, render;
 
-
-
 function init() {
   scene = new THREE.Scene();
   const background = new THREE.TextureLoader();
@@ -60,10 +58,19 @@ function animate() {
   var speed = Date.now() * 0.0005;
   camera.position.x = Math.cos(speed) * 20;
   camera.position.y = Math.cos(speed) * 30;
+<<<<<<< HEAD
 
   if (camera.position.y < 0) {
     camera.position.y = -camera.position.y
   }
+=======
+
+  if (camera.position.y < 0) {
+    camera.position.y = -camera.position.y;
+  }
+
+  console.log(camera.position.y);
+>>>>>>> 3338d11f721d14cfae5aa30b26344278d67a20d0
 
   camera.lookAt(scene.position);
   renderer.render(scene, camera);
