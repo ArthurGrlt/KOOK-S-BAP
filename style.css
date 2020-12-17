@@ -1,0 +1,87 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    font-family: "Open Sans", sans-serif;
+}
+
+canvas {
+    width: 10vw;
+    height: 10vh;
+    margin: 0;
+    overflow: hidden;
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 60px;
+}
+header p:first-child {
+    font-size: 1.5em;
+}
+
+header img {
+    width: 600px;
+}
+
+header p{
+    margin-top: 0px;
+    font-size: 2em;
+}
+
+.slider div:first-child{
+    display: flex;
+    justify-content: space-around;
+}
+
+.slider div:first-child p{
+    margin-top: 270px;
+    font-size: 2em;
+}
+
+.slider{
+    text-align: center;
+}
+
+.slider img{
+    width: 500px;
+}
+
+.sliderContent :first-child{
+    color: green;
+}
+
+section{
+    margin-top: 70px;
+}
+
+section h1{
+    text-align: center;
+    font-size: 2em;
+}
+
+.content{
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.contentText{
+    margin-top: 150px;
+    margin-right: 100px;
+}
+
+.contentText p:first-child{
+    font-weight: bold;
+}
+
+.contentText p {
+    margin-top: 20px;
+}
+
+.contentText p:nth-child(3){
+    color: green;
+}

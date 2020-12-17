@@ -1,20 +1,56 @@
 <html>
-  <head>
-    <title>KOOK'S</title>
-    <style>
-      body {
-        width: 100vw;
-        height: 100vh;
-        margin: 0;
-        overflow: hidden;
-      }
-    </style>
-  </head>
-  <body>
-    <script src="./js/three.min.js"></script>
-    <script src="./js/GLTFLoader.js"></script>
-    <script src="./js/OrbitControls.js"></script>
-    <!-- <script src="./js/OBJLoader.js"></script> -->
-    <script src="./js/scripts.js"></script>
-  </body>
+
+<head>
+  <title>KOOK'S</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+
+  <header>
+    <p>DECOUVREZ</p>
+    <img src="https://kooks.ams3.digitaloceanspaces.com/kooks.png" alt="KOOK'S" class="logo" data-v-04e5998a="">
+    <p>PATE A COOKIE CRUE</p>
+    <p>100% MADE IN FRANCE</p>
+  </header>
+  <main>
+    <div class="slider">
+      <div>
+        <p>&#x3c;</p>
+        <img src="https://kooks.ams3.digitaloceanspaces.com/restart/pistache.png" alt="Pistache" class="product-image"
+          data-v-46977c9e="">
+        <p>&#x3e;</p>
+      </div>
+      <div class="sliderContent">
+        <p>PISTACHE</p>
+        <p>Savoureuse et colorée</p>
+      </div>
+    </div>
+
+    <section>
+      <h1>Qu'est-ce que <br> la cookie dough ?</h1>
+      <div class="content">
+        <div id="canvasContainer">
+          <canvas id="firstCanvas"></canvas>
+        </div>
+        <div class="contentText">
+          <p>Ce dessert d'origine américaine est une pâte à cookie qui se déguste sans cuisson. Un mélange parfait entre
+            la glace et le cookie. Frais mais pas glacé, c'est un véritable délice !</p>
+          <p>Nos recettes sont réalisées à partir d'une farine adaptée à la digestion sans cuisson et nous n'utilisons
+            pas d'œufs.</p>
+          <p>La conservation de nos recettes</p>
+          <p>La pâte à cookie KOOK'S se conserve au frais (entre 0 et 4°C). Pour une dégustation parfaite, nous vous
+            conseillons de sortir votre pot de KOOK'S une dizaine de minutes avant de la déguster. Réussirez-vous à
+            tenir ?</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="./js/three.min.js"></script>
+  <script src="./js/GLTFLoader.js"></script>
+  <script src="./js/OrbitControls.js"></script>
+  <script src="./js/scripts.js"></script>
+</body>
+
 </html>
